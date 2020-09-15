@@ -1,0 +1,33 @@
+import turistas.*
+
+describe "viajeros"{
+
+	const pedro = new Turista(lugarFavorito = francia)
+	const cecilia= new Turista(lugarFavorito = roma, cajaFuerte = 3000)
+	
+	fixture{
+		pedro.abrirCuenta(6000)
+	}	
+
+test "plata disponible sin pasear" {
+
+	assert.equals(17000,  pedro.cuantaPlataTenes())
+
+}
+
+
+test "Paseando por francia" {
+
+	pedro.salirAPasear()
+	assert.equals(16000,  pedro.cuantaPlataTenes())
+
+}
+
+test "paseando por roma" {
+
+	cecilia.salirAPasear()
+	assert.equals(0,  cecilia.cuantaPlataTenes())
+
+}
+
+}
