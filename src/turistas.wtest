@@ -3,10 +3,12 @@ import turistas.*
 describe "viajeros"{
 
 	const pedro = new Turista(lugarFavorito = francia)
-	const cecilia= new Turista(lugarFavorito = roma, cajaFuerte = 3000)
+	const pablo = new Turista(lugarFavorito = roma, cajaFuerte = 3000)
+	const cecilia = new Trabajador()
 	
 	fixture{
-		pedro.abrirCuenta(6000)
+		pedro.abrirCuenta(4000)
+		pedro.abrirCuenta(2000)
 	}	
 
 test "plata disponible sin pasear" {
@@ -15,6 +17,9 @@ test "plata disponible sin pasear" {
 
 }
 
+test "un trabajador empieza con deudas" {
+	assert.that(cecilia.cuantaPlataTenes()<0)
+}
 
 test "Paseando por francia" {
 
@@ -25,9 +30,17 @@ test "Paseando por francia" {
 
 test "paseando por roma" {
 
-	cecilia.salirAPasear()
-	assert.equals(0,  cecilia.cuantaPlataTenes())
+	pablo.salirAPasear()
+	assert.equals(0, pablo.cuantaPlataTenes())
 
+}
+
+test "dos turistas tiene el mismo chofer, quien cuenta todos los viajes " {
+	const jaime = pedro.chofer() 
+	pedro.salirAPasear()
+	pablo.chofer(jaime)
+	pablo.salirAPasear()
+	assert.equals(2,jaime.viajesRealizados())
 }
 
 }

@@ -5,6 +5,7 @@ class Chofer {
 	method llevameA(unLugar){
 		cantidadViajes +=1
 	}
+	method viajesRealizados() = cantidadViajes
 }
 
 object francia {
@@ -30,7 +31,7 @@ class Turista {
 	var lugarFavorito
 	var cajaFuerte = 10000
 	var cuentasBancarias = []
-	var miChofer = new Chofer()
+	var property chofer = new Chofer()
 	
 	method comoEstas() {
 		return 'tipo que joya!!!'
@@ -41,7 +42,7 @@ class Turista {
 	}
 		
 	method salirAPasear(){
-		miChofer.llevameA(lugarFavorito)
+		chofer.llevameA(lugarFavorito)
 		cajaFuerte -= lugarFavorito.importe()
 	}
 	
